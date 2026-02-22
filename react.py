@@ -1,6 +1,7 @@
 from dotenv import load_dotenv
 from langchain_core.tools import tool
 from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_groq import ChatGroq
 from langchain_tavily import TavilySearch
 
 load_dotenv()
@@ -15,6 +16,6 @@ def triple(num:float) -> float:
 
 tools = [TavilySearch(max_results=1), triple]
 
-llm = ChatGoogleGenerativeAI(
-    model="gemini-2.0-flash",
+llm = ChatGroq(
+    model="llama-3.1-8b-instant",
     temperature=0).bind_tools(tools)
